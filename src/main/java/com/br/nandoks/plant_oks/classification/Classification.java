@@ -11,6 +11,8 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
+import java.util.List;
+
 @Table(name="classifications")
 @Entity
 @Getter
@@ -20,17 +22,12 @@ import lombok.Setter;
 public class Classification {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.SEQUENCE)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @OneToOne(fetch = FetchType.LAZY)
-    @Nullable
-    private Plant plant;
+    @OneToMany(mappedBy = "classification")
+    private List<Plant> plant;
 
-    @Enumerated(EnumType.STRING)
-    private Family family;
-
-
-
+    private String family;
 
 }

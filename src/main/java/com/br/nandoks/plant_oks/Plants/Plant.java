@@ -21,7 +21,7 @@ import lombok.Setter;
 public class Plant {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.SEQUENCE)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
     @NotNull
@@ -32,21 +32,19 @@ public class Plant {
     private String binomialName;
 
     private String slug;
-    @OneToOne(fetch = FetchType.LAZY)
+
+    @ManyToOne(fetch = FetchType.LAZY)
     private Classification classification;
 
     @OneToOne(fetch = FetchType.LAZY)
     @Nullable
     private Care care;
 
-    @Enumerated(EnumType.STRING)
-    private Season fruitSeason;
+    private String fruitSeason;
 
-    @Enumerated(EnumType.STRING)
-    private PropagationMethod propagationMethod;
+    private String propagationMethod;
 
-    @Enumerated(EnumType.STRING)
-    private Level maintenanceLevel;
+    private String maintenanceLevel;
 
     private String maintenanceDetails;
 

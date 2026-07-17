@@ -18,7 +18,7 @@ import lombok.Setter;
 @AllArgsConstructor
 public class Care {
     @Id
-    @GeneratedValue(strategy = GenerationType.SEQUENCE)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
     @OneToOne
@@ -40,9 +40,6 @@ public class Care {
     @Nullable
     private Season prunningSeason;
 
-
-    @Enumerated(EnumType.STRING)
-    @Nullable
-    private Level wateringRecurrence;
+    private String wateringRecurrence;
 
 }
