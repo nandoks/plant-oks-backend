@@ -12,8 +12,8 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
-@Table(name = "plants")
 @Entity
+@Table(name = "plants")
 @Getter
 @Setter
 @NoArgsConstructor
@@ -29,8 +29,9 @@ public class Plant {
     @NotNull
     private String commomName;
     @NotNull
-    private String cientificName;
+    private String binomialName;
 
+    private String slug;
     @OneToOne(fetch = FetchType.LAZY)
     private Classification classification;
 
@@ -39,13 +40,10 @@ public class Plant {
     private Care care;
 
     @Enumerated(EnumType.STRING)
-    @NotBlank
     private Season fruitSeason;
 
     @Enumerated(EnumType.STRING)
     private PropagationMethod propagationMethod;
-
-    private String slug;
 
     @Enumerated(EnumType.STRING)
     private Level maintenanceLevel;
@@ -54,4 +52,5 @@ public class Plant {
 
 
 }
+
 

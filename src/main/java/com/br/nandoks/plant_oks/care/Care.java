@@ -24,15 +24,25 @@ public class Care {
     @OneToOne
     private Plant plant;
 
+    @Nullable
     private Integer max_temperature;
+    @Nullable
     private Integer min_temperature;
+    @Nullable
     private Integer min_ph;
+    @Nullable
     private Integer max_ph;
+    @Nullable
     private Integer min_humidity;
+    @Nullable
     private Integer max_humidity;
+
+    @Nullable
     private Season prunningSeason;
+
+
+    @Enumerated(EnumType.STRING)
+    @Nullable
     private Level wateringRecurrence;
-
-
 
 }
