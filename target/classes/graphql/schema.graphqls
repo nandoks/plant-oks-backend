@@ -1,0 +1,38 @@
+type Query{
+    plants: [Plant!]!,
+    plant(id: ID!): Plant,
+}
+
+
+type Plant {
+    id: ID!,
+    description: String,
+    commomName: String,
+    binomialName: String,
+    slug: String,
+    maintenanceDetails: String,
+    fruitSeason: String,
+    propagationMethod: String,
+    care: Care,
+    classification: Classification,
+
+}
+
+type Care{
+    id: ID!,
+    plant: Plant,
+    max_temperature: Int,
+    min_temperature: Int,
+    min_ph: Int,
+    max_ph: Int,
+    min_humidity: Int,
+    max_humidity: Int,
+    prunningSeason: String,
+    wateringRecurrence: String
+}
+
+type Classification {
+    id: ID!,
+    plant: Plant,
+    family: String
+}
