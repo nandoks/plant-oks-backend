@@ -1,21 +1,26 @@
 type Query{
     plants: [Plant!]!,
     plant(id: ID!): Plant,
+    classifications: [Classification!]!
+    search(text: String): [SearchItem]
 }
 
+type Mutation{
+    addClassification(classificationInput: ClassificationInput): Classification!
+    addPlant(plantInput: PlantInput): Plant!
+}
 
 type Plant {
     id: ID!,
-    description: String,
-    commomName: String,
-    binomialName: String,
-    slug: String,
-    maintenanceDetails: String,
-    fruitSeason: String,
-    propagationMethod: String,
-    care: Care,
-    classification: Classification,
-
+    description: String!
+    commomName: String!
+    binomialName: String!
+    slug: String
+    maintenanceDetails: String
+    fruitSeason: String
+    propagationMethod: String
+    care: Care
+    classification: Classification
 }
 
 type Care{
@@ -33,6 +38,20 @@ type Care{
 
 type Classification {
     id: ID!,
-    plant: Plant,
+    plant: [Plant!]!,
     family: String
 }
+
+input ClassificationInput{
+    family: String
+}
+
+input PlantInput{
+    description: String,
+    commomName: String,
+    classificationId: ID,
+    binomialName: String
+}
+
+union SearchItem = Classification | Plant
+
